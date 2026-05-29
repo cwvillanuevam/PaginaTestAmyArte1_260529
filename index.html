@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PivotDraw | App de Validación</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>PivotDraw MVP</h1>
+        <nav>
+            <button onclick="showTab('dashboard')">Análisis y Pivoteo</button>
+            <button onclick="showTab('draw')">Dibujo Libre</button>
+            <button onclick="showTab('photo')">Foto a Colorear</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="dashboard" class="tab-content active">
+            <h2>Métricas de Decisión (Cuándo Pivotear)</h2>
+            <p>Si la tracción de "Fotos" supera a "Dibujo Libre", el pivote debe ser hacia una App de Filtros.</p>
+            <div class="chart-container">
+                <canvas id="pivotChart"></canvas>
+            </div>
+        </section>
+
+        <section id="draw" class="tab-content">
+            <h2>Lienzo Libre</h2>
+            <div class="canvas-wrapper">
+                <canvas id="freeCanvas" width="600" height="400"></canvas>
+            </div>
+            <button onclick="clearCanvas('freeCanvas')">Limpiar Lienzo</button>
+        </section>
+
+        <section id="photo" class="tab-content">
+            <h2>Transformar y Colorear</h2>
+            <p>Sube una foto o tómala con tu cámara. El sistema la convertirá en un dibujo lineal.</p>
+            <input type="file" id="imageLoader" accept="image/*" capture="environment">
+            <div class="canvas-wrapper">
+                <canvas id="photoCanvas" width="600" height="400"></canvas>
+            </div>
+            <div class="controls">
+                <button onclick="processImage()">1. Convertir a Coloreable</button>
+                <button onclick="clearCanvas('photoCanvas')">2. Limpiar Dibujo</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
